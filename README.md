@@ -6,14 +6,12 @@ this extension uses nvidia-smi to monitor GPU temperature at the end of each ste
 Nvidia GPU
 
 ## Installation
-- method 1: Install using extensions tab `Available` extensions
-- method 2: Install using extensions tab `Install from URL` by manually copying the repository URL
+- To install this custom node for ComfyUI, clone the repository using Git or download it, and then copy the node files to: ComfyUI\custom_nodes\ComfyUI-GPU-temperature-protection
 ```
-https://github.com/w-e-w/stable-diffusion-webui-GPU-temperature-protection.git
+https://github.com/meap158/ComfyUI-GPU-temperature-protection.git
 ```
 
 ## Setting
-Settings can be found at `Setting` > `GPU Temperature`
 
 - `GPU temperature monitor minimum interval`
     - checking temperature too often will reduce image generation performance
@@ -33,9 +31,9 @@ Settings can be found at `Setting` > `GPU Temperature`
 - `Print GPU Core temperature while sleeping in terminal`
     - print the GPU core temperature reading from nvidia-smi to console when generation is paused
     - providing information
-- `GPU device index`
-    - selecting the correct temperature reading for multi GPU systems
-    - in most cases and for single GPU system this value should be `0`
+
+## Usage
+To use the custom node, simply connect it to a node with the output being an image, such as VAE Decode as shown in the screenshot below:
 
 ## Notes
 - Temperature unit Celsius, Time unit seconds
