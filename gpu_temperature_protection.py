@@ -96,7 +96,7 @@ class GPUTemperatureProtection:
                 }),
                 # Max sleep time
                 "max_sleep_time": ("INT", {
-                    "default": 0,
+                    "default": 180,
                     "min": 0,
                     "max": sys.maxsize,
                     "step": 1,
