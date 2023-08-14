@@ -34,6 +34,9 @@ https://github.com/meap158/ComfyUI-GPU-temperature-protection.git
 
 ## Usage
 To use the custom node, simply connect it to a node with the output being an image, such as VAE Decode as shown in the screenshot below:
+<p float="left">
+  <img src="https://github.com/meap158/ComfyUI-GPU-temperature-protection/assets/14327094/c56fcf3c-1074-42f0-b59b-e8e9d530c2f0" width="300" />
+</p>
 
 ## Notes
 - Temperature unit Celsius, Time unit seconds
