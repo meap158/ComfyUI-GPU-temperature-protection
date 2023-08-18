@@ -104,7 +104,7 @@ class GPUTemperatureProtection:
                 }),
                 # GPU sleep temperature
                 "sleep_temp": ("INT", {
-                    "default": 82,
+                    "default": 79,
                     "min": 0,
                     "max": 125,
                     "step": 1,
