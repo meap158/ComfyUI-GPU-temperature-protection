@@ -6,10 +6,15 @@ this extension uses nvidia-smi to monitor GPU temperature at the end of each ste
 Nvidia GPU
 
 ## Installation
-- To install this custom node for ComfyUI, clone the repository using Git or download it, and then copy the node files to: ComfyUI\custom_nodes\ComfyUI-GPU-temperature-protection
+You can install this custom node in two ways:
+
+- The first (recommended) way is to search for "GPU temperature protection" in ComfyUI Manager and install it from there.
+
+- Alternatively, you can clone the repository using Git or download it, and then simply copy the node files to: `ComfyUI\custom_nodes\ComfyUI-GPU-temperature-protection`.
 ```
 https://github.com/meap158/ComfyUI-GPU-temperature-protection.git
 ```
+
 
 ## Setting
 
