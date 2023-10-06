@@ -26,14 +26,14 @@ class GPUTemperatureProtection:
         except Exception as e:
             print(f'[Error GPU {info} temperature protection]: {e}')
         return []
-    
+
     @classmethod
     def get_nr_of_gpus(cls):
         return len(cls.get_nvidia_smi(['-L'], 'initialization'))
 
-    @classmethod
-    def get_gpu_temperature(cls):
-        lst = cls.get_nvidia_smi(['--query-gpu=temperature.gpu', '--format=csv,noheader'], self.cuda_device)
+    def get_gpu_temperature(self):
+        args = ['--query-gpu=temperature.gpu', '--format=csv,noheader']
+        lst = GPUTemperatureProtection.get_nvidia_smi(args, str(self.cuda_device))
         return int(lst[self.cuda_device]) if self.cuda_device < len(lst) else 0
 
     def gpu_temperature_protection(self):
