@@ -91,7 +91,7 @@ class GPUTemperatureProtection:
                 "cuda_device": ("INT", {
                     "default": int(os.environ.get('CUDA_VISIBLE_DEVICES', '0')),
                     "min": 0,
-                    "max": s.get_nr_of_gpus(),
+                    "max": s.get_nr_of_gpus() -1,
                     "step": 1,
                     "display": "number"
                 }),
