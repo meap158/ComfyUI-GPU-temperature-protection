@@ -1,6 +1,7 @@
 import subprocess
 import sys
 import time
+import os
 
 
 class GPUTemperatureProtection:
@@ -17,15 +18,23 @@ class GPUTemperatureProtection:
         return
 
     @staticmethod
-    def get_gpu_temperature():
+    def get_nvidia_smi(smi_args, info):
         try:
-            return int(subprocess.check_output(
-                ['nvidia-smi', '--query-gpu=temperature.gpu', '--format=csv,noheader']).decode().strip())
+            return subprocess.check_output(['nvidia-smi'] + smi_args).decode().splitlines()
         except subprocess.CalledProcessError as e:
-            print(f"[Error GPU temperature protection]: {e.output.decode('utf-8').strip()}")
+            print(f"[Error GPU {info} temperature protection]: {e.output.decode('utf-8').strip()}")
         except Exception as e:
-            print(f'[Error GPU temperature protection]: {e}')
-        return 0
+            print(f'[Error GPU {info} temperature protection]: {e}')
+        return []
+
+    @classmethod
+    def get_nr_of_gpus(cls):
+        return len(cls.get_nvidia_smi(['-L'], 'initialization'))
+
+    def get_gpu_temperature(self):
+        args = ['--query-gpu=temperature.gpu', '--format=csv,noheader']
+        lst = GPUTemperatureProtection.get_nvidia_smi(args, str(self.cuda_device))
+        return int(lst[self.cuda_device]) if self.cuda_device < len(lst) else 0
 
     def gpu_temperature_protection(self):
         # Get the current GPU temperature
@@ -79,6 +88,13 @@ class GPUTemperatureProtection:
                 # Print GPU Core temperature while sleeping in terminal
                 "print_enabled": (["True", "False"],),
                 # GPU temperature monitor minimum interval
+                "cuda_device": ("INT", {
+                    "default": int(os.environ.get('CUDA_VISIBLE_DEVICES', '0')),
+                    "min": 0,
+                    "max": s.get_nr_of_gpus() -1,
+                    "step": 1,
+                    "display": "number"
+                }),
                 "min_interval": ("INT", {
                     "default": 5,
                     "min": 0,
