@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-gpu-temperature-protection"
+description = "Pause image generation when GPU temperature exceeds threshold."
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/meap158/ComfyUI-GPU-temperature-protection"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-GPU-temperature-protection"
+Icon = ""
